@@ -1,0 +1,6 @@
+<apex:page controller="accountrecord" >
+  <apex:form >
+  <apex:inputText value="{!ab}" label="name"/>
+  <apex:commandButton value="save" action="{!go}"/>
+  </apex:form>
+</apex:page>

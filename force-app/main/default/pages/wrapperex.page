@@ -1,0 +1,13 @@
+<apex:page controller="addTextrBox">
+  <apex:Form >
+       <apex:commandButton Value="Add Serial Number" action="{!addTextBox}"/>
+       <br></br>
+        
+       <apex:repeat value="{!listvalueOfTextBox}" var="item" rendered="{!IF(listvalueOfTextBox.size > 0 , true , false)}" >
+           <apex:inputcheckbox />
+           <apex:inputText value="{!item.textBoxValue}"/>
+           
+           <br></br>
+       </apex:repeat>
+   </apex:Form>
+</apex:page>

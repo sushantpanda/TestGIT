@@ -1,0 +1,102 @@
+<apex:page id="pg" standardController="candidate__c" extensions="editcand_cls" showHeader="false" >
+  <apex:form id="fm">
+
+    <apex:pageBlock id="pb" title="Candidate Registration">
+<apex:pageBlockSection title="Registration">
+<apex:inputField value="{!c.Email__c}"/>
+
+<apex:inputField value="{!c.password__c}"/>
+
+</apex:pageBlockSection>
+<apex:pageblockSection id="pbs" title="candidate information">
+
+<apex:inputField value="{!c.name}"/>
+<apex:inputField value="{!c.date_of_birth__c}"/>
+<apex:outputField value="{!c.age__c}"/>
+
+
+<apex:inputField value="{!c.address__c}"/>
+<apex:inputField value="{!c.street__c}"/>
+<apex:inputField value="{!c.city__c}"/>
+<apex:inputField value="{!c.state_province__c}"/>
+<apex:inputField value="{!c.country__c}"/>
+
+
+</apex:pageblockSection>
+
+
+
+
+<apex:pageblockSection title="upload cv ">
+
+
+  <a href="/servlet/servlet.FileDownload?file={!Candidate__c.image_ID__c}" target="_BLANK" > Download Your CV </a>
+  <apex:outputlabel style="color:#4a4a56;font-style:Arial;font-size:18px;" >Upload your new resume  </apex:outputlabel>
+    <apex:inputfile value="{!body}" filename="{!name}" />
+  
+</apex:pageblockSection>
+
+<apex:pageblockSection title="photo" >
+<apex:pageBlockSectionItem id="ImageUpload">
+       <apex:outputPanel id="img">
+          
+            <apex:outputLabel style="color:#4a4a56;font-style:Arial;font-size:18px;"> <B> Candidate Image</B></apex:outputLabel>
+        
+           &nbsp;&nbsp; &nbsp;<apex:image url="/servlet/servlet.FileDownload?file={!candidate__c.cv_id__c}" alt="select image" style="width:100px;height:100px" id="canimage" />
+              <apex:inputFile id="inputimage" value="{!body1}" filename="{!name1}" accept="image/gif"></apex:inputFile>
+           
+           
+           
+           </apex:outputPanel>  
+          </apex:pageBlockSectionItem>
+          </apex:pageblockSection>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         
+         
+          
+
+<apex:pageblockSection title="current employee">
+
+<apex:inputField value="{!c.name_of_employee__c}"/>
+<apex:inputField value="{!c.skill__c}"/>
+<apex:inputField value="{!c.year_of_experience__c}"/>
+<apex:inputField value="{!c.higest_education__c}"/>
+</apex:pageblockSection>
+
+<apex:pageblockSection title="mailer and private setting">
+<apex:inputField value="{!c.email_alert_on_new_job__c}"/>
+<apex:inputField value="{!c.enable_profile_for_employee__c}"/>
+
+</apex:pageblockSection>
+
+
+<apex:pageblockButtons >
+<apex:commandButton value="update" action="{!save}"  />
+
+</apex:pageblockButtons>
+
+
+</apex:pageblock>
+
+
+
+
+ </apex:form>
+ 
+</apex:page>

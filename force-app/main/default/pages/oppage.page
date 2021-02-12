@@ -1,0 +1,65 @@
+<apex:page > 
+<div class="regComm" style="border:2px solid black height:100px">
+<h2 class="t22yel" style="color: rgb(35, 117, 194); padding: 0 0 20px; margin:0px;">Member/Registered User Benefits...</h2>
+<table class="t11" width="90%" cellspacing="0" cellpadding="0" border="0">
+<tbody>
+<tr>
+<td width="7%" valign="top">
+<div class="arrowbtn" style="height:22px;border:100px;"></div>
+</td>
+<td width="94%">
+<span class="ben t12">
+<strong>Create Customized 'Job Alert'</strong>
+</span>
+<br>
+Get Jobs regularly in your inbox by creating up to 5 personalized Job Alert</br>
+</td>
+</tr>
+<tr>
+<td height="23" colspan="2">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top">
+<div class="arrowbtn" style="height:22px;"></div>
+</td>
+<td>
+<span class="ben t12">
+<strong>Create Multiple Profiles</strong>
+</span>
+<br>
+Create upto 5 customized profiles to apply to jobs in different categories</br>
+</td>
+</tr>
+<tr>
+<td height="23" colspan="2">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top">
+<div class="arrowbtn" style="height:22px;"></div>
+</td>
+<td>
+<span class="ben t12">
+<strong>Let Recruiters find you the right job</strong>
+</span>
+<br>
+Thousands of recruiters search our database daily to find candidates. Get found by them</br>
+</td>
+</tr>
+<tr>
+<td height="23" colspan="2">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top">
+<div class="arrowbtn" style="height:22px;"></div>
+</td>
+<td>
+<span class="ben t12">
+<strong>Confidentiality &amp; Privacy Settings</strong>
+</span>
+<br>
+Define your privacy level. Block your current employer from accessing your profile.</br>
+</td>
+</tr>
+</tbody>
+</table></div>
+</apex:page>

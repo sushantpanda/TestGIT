@@ -1,0 +1,25 @@
+<apex:page >  
+        <apex:includescript value="/soap/ajax/19.0/connection.js">  
+        </apex:includescript>  
+          
+        <script>  
+            //Session  
+            sforce.connection.sessionId = "{!$Api.Session_ID}";  
+              
+            //Case instance  
+            var update_Case = new sforce.SObject("Case");  
+            //Fetching the record Id  
+            var CID = '{!$CurrentPage.parameters.RecId}' ;  
+            update_Case.Id = CID;  
+            //Change the status to close  
+            update_Case.Status = 'Closed';  
+            //Keeping the array in case if we need to extend this for bulk case update  
+            var updateRecords = [];  
+            updateRecords.push(update_Case) ;  
+            //Updating the case  
+            var result = sforce.connection.update(updateRecords);  
+            //Returning to account  
+            window.location.href = '/{!$CurrentPage.parameters.AccId}' ;  
+          
+    </script>  
+    </apex:page>

@@ -1,0 +1,31 @@
+<apex:page >
+<apex:form >
+<apex:commandButton value="save" oncomplete="click(1);"/>
+<apex:actionFunction name="save12" action="{!save1}">
+<apex:param value="" assignTo="{!value}"/>
+</apex:actionFunction>
+<apex:commandButton value="save&newtask" onclick="click(2);"/>
+<apex:commandButton value="save&new event" onclick="click(3);"/>
+
+<script>
+
+
+function click(ab)
+{
+ alert('__________ab_____'+ab);
+ save12(1)
+ {alert('__________ab_____'+ab);
+ if(ab=='1')
+ {
+ window.open="https://ap1.salesforce.com/home/home.jsp";
+ }
+ }
+
+}
+
+
+</script>
+
+
+</apex:form>
+</apex:page>

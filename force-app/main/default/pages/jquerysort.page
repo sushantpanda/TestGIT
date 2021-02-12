@@ -1,0 +1,49 @@
+<apex:page >
+<apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jquery-ui-1.9.2.custom/js/jquery-1.8.3.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.jQueryUI, '/jquery-ui-1.9.2.custom/css/ui-lightness/jquery-ui-1.9.2.custom.min.css')}"/> 
+<style>
+  #sortable,#sortable2 { list-style-type: none; margin: 0; padding: 0; width: 1050px; }
+  #sortable li,#sortable2 li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 150px; height: 30px; font-size: 2em; text-align: center; }
+  </style>
+  
+<script>
+  $(function() {
+       $("#sortable" ).sortable();
+    $( "#sortable2" ).sortable({
+      revert: true
+    });
+    $( "#draggable" ).draggable({
+      connectToSortable: "#sortable2",
+      helper: "clone",
+      revert: "invalid"
+    });
+    $( "ul, li" ).disableSelection();
+  });
+  </script>
+
+<body>
+<div>
+<ul id="sortable">
+            <li id="draggable" class="ui-state-default">Item 1 </li>
+    <li id="draggable" class="ui-state-default">Item 2</li>
+    <li id="draggable" class="ui-state-default">Item 3</li>
+    <li id="draggable" class="ui-state-default">Item 4</li>
+    <li id="draggable" class="ui-state-default">Item 5</li>
+    <li id="draggable" class="ui-state-default">Item 6</li>
+    <li id="draggable" class="ui-state-default">Item 7</li>
+</ul>
+</div>
+<br></br>
+<br></br>
+<br></br>
+<div>
+<ul id="sortable2" class="connectedSortable">
+  <li class="ui-state-highlight">Item 1</li>
+ 
+</ul>
+</div>
+<script src="jquery.sortable.js"></script>
+
+ </body>
+</apex:page>

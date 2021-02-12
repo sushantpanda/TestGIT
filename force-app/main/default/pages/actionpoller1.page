@@ -1,0 +1,28 @@
+<apex:page controller="addProductsRedirect">
+<script>
+function ss()
+{
+ var v1=document.getElementById(j_id0:j_id2:j_id3)).value;
+ alert(v1);
+ alert('ssss');
+}
+
+</script>
+<apex:form >
+<apex:inputtext value="{!opp }" onchange="ss()"/>
+
+
+<apex:commandButton id="bt" value="save"  />
+
+
+</apex:form>
+   <!-- <apex:outputField value="{!opp.Id}"/>
+    <apex:outputField value="{!opp.Name}"/>
+    
+    <apex:form >
+        <apex:commandLink value="Add Product" action="{!addProduct}">
+            <apex:param name="addProductsURL" value="{!URLFOR($Action.OpportunityLineItem.AddProduct)}" assignTo="{!addProductsURL}"/>
+        </apex:commandLink>
+    </apex:form>
+    {!URLFOR($Action.OpportunityLineItem.AddProduct)}-->
+</apex:page>

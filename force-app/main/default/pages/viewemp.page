@@ -1,0 +1,98 @@
+<apex:page standardController="account" showHeader="false" 
+           tabStyle="account" extensions="viewemp" >
+<style>
+      .activeTab {background-color: #236FBD; color:white font-size: 19pt; width: 140pt ;height:5pt;
+         background-image:none}
+      .inactiveTab { background-color: lightgrey; color:black; font-size: 20pt;
+         background-image:none}
+   </style>
+   
+   
+   <script>
+function updateTab(tabname){
+      switchTab(tabname);
+}
+ </script>
+ 
+ 
+ <table width="971" cellspacing="0" cellpadding="0" border="0" align="center">
+<tbody>
+<tr>
+<td height="110" style="padding: 3px 0px 0px 15px;">
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody>
+<tr>
+<td width="49%" height="110">
+<a href="http://www.monsterindia.com/">
+<img border="0"  src='{!URLFOR($Resource.navatar)}'/>
+</a>
+</td>
+<td width="51%" valign="top" align="right" style="padding: 8px 0px 10px 12px;">
+
+<span class="txt_black" style="padding: 0px 5px 0px 0px;">
+Hi
+<span class="bold">{!acc.name}!</span>
+</span>
+
+&nbsp;|&nbsp;
+<a href="https://c.ap1.visual.force.com/apex/login">Sign Out </a>
+
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+           
+ 
+
+ <apex:form >
+ <apex:actionFunction name="switchTab" action="{!switchTab}" immediate="true">
+  <apex:param name="tabvalue" value="" />
+ </apex:actionFunction>
+ </apex:form>
+   
+   
+
+<apex:tabPanel switchType="client" selectedTab="account" id="AccountTabPanel"  tabClass="activeTab" inactiveTabClass="inactiveTab"  style="font-family: Helvetica; font-size: 12pt;" >
+        <apex:tab label=" profile" name="name1" id="tabone" ontabenter="updateTab('tabone');" >
+         <iframe src="/apex/showemp1?cid={!acc.id}"  width = "100%" height="500px">
+        
+        </iframe>
+        </apex:tab>
+          <apex:tab label="Edit profile" name="name5" id="tabfive"  >
+         <iframe src="/apex/editemp?cid={!acc.id}"  width = "100%" height="500px">
+        
+        </iframe>
+        
+        
+        </apex:tab>
+        
+        
+        <apex:tab label="search" name="name3" id="tabTwo">
+         <iframe src="/apex/employeesearch?cid={!acc.id}"  width = "100%" height="500px">
+        
+        </iframe>
+        
+        
+        </apex:tab>
+        
+       
+        
+        
+        
+        
+        
+         
+         <apex:tab label="Job posting" name="name4" id="tabfour">
+         <iframe src="/apex/jobposting?cid={!acc.id}"  width = "100%" height="400px">
+        
+        </iframe>
+        </apex:tab>
+        
+    </apex:tabPanel>
+
+
+</apex:page>

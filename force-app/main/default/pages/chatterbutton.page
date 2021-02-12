@@ -1,0 +1,53 @@
+<apex:page controller="chatterbutton_cls" extensions="chatterbuttonext" >
+    
+    <html>
+    <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>Textarea tags - jsFiddle demo</title>
+    
+    <script type='text/javascript' src='//code.jquery.com/jquery-1.9.1.js'></script>
+
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css"/>
+
+    
+    <style type='text/css'>
+    
+    </style>
+    
+    
+    
+    <script type='text/javascript'>//<![CDATA[ 
+    $(function(){
+    $( 'input[type=button]' ).on('click', function(){
+    var cursorPos = $('#text').prop('selectionStart');
+    var v = $('#text').val();
+    var s = $('#apexaccountautocomplete').val();
+    var textBefore = v.substring(0, cursorPos );
+    var textAfter = v.substring( cursorPos, v.length );
+    $('#text').val( textBefore+ s +textAfter );
+    });
+    });//]]> 
+    
+    </script>
+    
+    
+    </head>
+    <body>
+    <form>
+    <div>
+   <b>Select Field</b>&nbsp;&nbsp;&nbsp;<input type="text"  id="apexaccountautocomplete"/><br/><br/>
+    <input type="button" value="insert" /></div>
+    <textarea id="text" cols="40" rows="3"></textarea>
+    
+    </form>
+    
+    </body>
+    
+    
+    </html>
+
+</apex:page>

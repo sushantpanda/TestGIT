@@ -1,0 +1,7 @@
+<apex:page controller="testemail">
+ <apex:form >
+ <apex:pageBlock >
+ <apex:commandButton value="check" action="{!check}"/>
+ </apex:pageBlock>
+ </apex:form>
+</apex:page>

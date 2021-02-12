@@ -1,0 +1,31 @@
+<apex:page controller="appliedjob">
+<apex:form >
+
+<apex:pageblock title="Job Applied By You">
+<div style="margin-top:25px;" align="center">
+<apex:dataTable value="{!ap}" var="a" cellspacing="1" cellpadding="1" border="1">
+
+<apex:column value="{!a.employername__c}">
+<apex:facet name="header">Company Name</apex:facet>
+</apex:column>
+<apex:column >
+<apex:facet name="header">location_________________         </apex:facet>
+                        <apex:outputtext value="{!a.location__c}">
+                           
+                        </apex:outputtext>
+                     </apex:column>  
+                     <apex:column >
+<apex:facet name="header">jobid_________________         </apex:facet>
+                        <apex:outputtext value="{!a.jobid__c}">
+                           
+                        </apex:outputtext>
+                     </apex:column>     
+                       
+</apex:dataTable>
+</div>
+
+</apex:pageblock>
+</apex:form>
+
+
+</apex:page>

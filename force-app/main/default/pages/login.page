@@ -1,0 +1,16 @@
+<apex:page controller="login_cls" showHeader="false" extensions="test">
+<apex:form >
+<div align="center" style ="height:300; width:auto;" >
+<apex:outputText style="font-size:100px" ><h2>welcome to job portal</h2> </apex:outputText>
+
+</div>
+<div id="theDiv" align="left"><img id="theImg"   src='{!URLFOR($Resource.login)}' />
+</div>
+
+<br></br>
+<div align="center">
+<apex:commandButton value="login" action="{!signin1}" style="width:150px; height: 50px; background:green" />
+
+</div>
+</apex:form>
+</apex:page>

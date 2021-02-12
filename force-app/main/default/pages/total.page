@@ -1,0 +1,37 @@
+<apex:page id="p1" >
+<apex:form id="f1">
+<apex:actionFunction name="aa" reRender="p1:f1:pb1:o1" />
+  <apex:pageBlock id="pb1" >
+  <div >
+ TOTAL NO OF PRODUCT:<apex:inputText id="i1" onchange="mul();return false;"  /><br></br><br></br>
+ COST OF PRODUCT:<apex:inputText id="i2"  onchange="mul();return false;" /><br></br><br></br>
+ <apex:outputPanel id="o1">
+ PRICE:<apex:outputText id="i3" /><br></br><br></br>
+ </apex:outputPanel>
+ <!--<apex:commandButton value="click" onclick="mul();return false;" reRender="p1:f1:pb1:o1" > 
+
+ </apex:commandbutton>-->
+  </div>
+  </apex:pageBlock>
+  <script>
+  function mul()
+  {
+  
+  var product= document.getElementById("p1:f1:pb1:i1").value;
+  
+  var cost= document.getElementById("p1:f1:pb1:i2").value;
+
+  var price= (product*cost);
+
+  document.getElementById('p1:f1:pb1:i3').innerHTML=price;  
+  
+  }
+  
+  
+  
+  </script>
+  
+  
+  
+  </apex:form>
+</apex:page>

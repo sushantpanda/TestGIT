@@ -1,0 +1,9 @@
+<apex:page controller="searchDuplicate">
+    <apex:pageBlock title="Searching for Duplicate Contacts Record"> 
+    </apex:pageBlock>
+    <apex:pageBlock title="Contacts">
+        <apex:dataTable value="{!con}" var="c" border="2" cellspacing="5" cellpadding="5">
+           <apex:column headerValue="Email" value="{!$ObjectType['contact'].Fields['email'].Label}" /> 
+        </apex:dataTable>
+    </apex:pageBlock>     
+</apex:page>

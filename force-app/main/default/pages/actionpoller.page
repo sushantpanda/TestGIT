@@ -1,0 +1,16 @@
+<apex:page controller="checkboxcls" renderAs="pdf">
+
+<apex:form >
+<apex:outputText >{!ss}</apex:outputText>
+    <apex:PageBlock >
+        <apex:pageBlockTable value="{!items}" var="i">
+        <apex:column >
+            <apex:inputCheckbox value="{!i.check}"/>
+        </apex:Column>
+                <apex:column value="{!i.con.name}"/>
+                <apex:column value="{!i.con.phone}"/>
+        </apex:pageBlockTable>
+        <apex:commandButton value="Selected" action="{!selected}"/>
+    </apex:PageBlock>
+</apex:form>
+</apex:page>

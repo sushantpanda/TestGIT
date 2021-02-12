@@ -1,0 +1,5 @@
+<apex:page controller="genxml">
+  <apex:form >
+  <apex:commandButton value="click" action="{!DomExample}"/>
+  </apex:form>
+</apex:page>

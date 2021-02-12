@@ -1,0 +1,139 @@
+<apex:page controller="searchjobseeker_cls" id="pg"  sidebar="false" showHeader="false">
+<apex:outputPanel id="abc"></apex:outputPanel>
+  <apex:form id="frm" >
+   
+   
+       <div style="border: 0px solid rgb(100, 200, 200); width:100%;height:900px; background:#dcf0dd;"><p style="margin-left:80px;"><table width="100%"><tr><td  align="left" width="50%" style="font-size:25px;"><B>Welcome {!printemp1.Name}</B></td>
+     <td>   </td><tr></tr>
+     <td>   </td><tr></tr>
+     <td>   </td><tr></tr>
+     <td>   </td><tr></tr>
+       
+       
+       <td align="left" width="80%">
+                         
+       
+        
+        <B>Skills</B>
+              <apex:inputText value="{!searchvalue}" size="30"/>
+              <apex:commandButton value="search" id="Search" action="{!search1}" reRender="ref2" />
+              <!--apex:commandButton value="CheckBxselected" id="cb" onclick="check1();" reRender="abc" oncomplete="" /-->
+        
+         
+         </td></tr></table></p>
+       
+       
+       <script type="text/javascript" src="{!URLFOR($Resource.gridwidget, 'ActiveWidgets/runtime/lib/aw.js')}"/>
+        <link href = "{!URLFOR($Resource.gridwidget, 'ActiveWidgets/runtime/styles/aqua/aw.css')}" rel="stylesheet" type="text/css"/>  
+               <apex:outputPanel id="ref2">
+             
+                  <span id="mygrid"></span>
+                  <span id="myLabel"></span>
+                  <style>
+                     
+                      #mygrid .aw-column-0 {width:  0px;text-align: center;display: none;}
+                      #mygrid .aw-column-1 {width: 250px;text-align: left}
+                      #mygrid .aw-column-2 {width: 150px; text-align: center}
+                      #mygrid .aw-column-3 {width: 200px; text-align: center}
+                      #mygrid .aw-column-2 {width: 150px; text-align: left}
+                  </style>
+                        <script type="text/javascript">
+                           var grid1 = new AW.UI.Grid;
+                           grid1.setId("mygrid");
+                           grid1.setControlPosition(50,100);
+                           grid1.setControlSize(1000,300);
+                           grid1.setColumnCount(6);
+                           grid1.setColumnWidth([200, 180, 180]);
+                           var myheader= ["","Name","Skills","Experience","state","see profile"];
+                           grid1.setHeaderText(myheader);
+
+                          // var objChkSelectAll=new AW.UI.CheckBox;
+                          // var objGridCellChkBox=new AW.Templates.Checkbox;  
+                           grid1.setCellText({!value1});
+                           //alert('_grid data1_'+{!value1});
+                           if({!value1} != '[["","","","","",""]]')
+
+                            {
+                                  for(var i=0;i<{!value1}.length;i++)
+                              //  grid1.setHeaderTemplate(objChkSelectAll,0);                           
+                                grid1.setCellTemplate(new AW.Templates.Checkbox ,0);
+                            }
+
+                          // if('{!value1}'!='[["","","",""]]')
+                          // grid1.setSelectionMode("multi-row-marker");
+                           grid1.setRowCount(20);
+                           grid1.setRowHeight(50);
+                           grid1.setVirtualMode(false); // disable virtual scrolling
+                           grid1.refresh();
+                       // document.write(grid1);
+                         
+                         function check1()
+                         {
+                             var newstringId='';
+                             //alert('________Check1______'+grid1);
+                             for(var i=0;i<500;i++)
+                             {
+                                 if(grid1.getCellValue(0,i)==true)
+                                 {
+                                     if(newstringId!='')                           
+
+                                            newstringId=newstringId+','+grid1.getCellValue(1,i); // To get Record ID
+
+                                     else
+
+                                            newstringId=grid1.getCellValue(1,i);
+
+                                 }
+                                 
+                             }
+                             //alert('____________newstringId_______'+newstringId);
+                         }
+                        
+                  </script>
+               
+                   <script>
+                    function test(getvlaue)
+                      {  
+                         //alert('___Hello_____');
+                         methodOneInJavascript(getvlaue);
+                        
+                      }
+                   </script >
+                   <apex:actionFunction action="{!displaycompany}" oncomplete="show()" name="methodOneInJavascript" reRender="ref1,ref2">
+                      <apex:param name="firstParam" assignTo="{!accountidd}" value=""/ > 
+                  </apex:actionFunction>
+                 </apex:outputPanel>
+                 
+                 <div style="position:absolute; left:200px; top:400px; display:none;" id="tablediv"  >
+                 <apex:outputpanel id="ref1" >
+                       <div style="position:absolute; left:150px; top:150px;" id="tablediv1"  >
+                 <apex:outputpanel >
+                
+                  
+                 </apex:outputpanel>
+                 </div>
+                 <div style="position:absolute; left:310px; top:150px;" id="tablediv2"  >
+                 <apex:outputpanel >
+                
+                 
+                 </apex:outputpanel>
+                 </div>
+                        
+                 </apex:outputpanel>
+                 </div>
+
+  
+   
+
+  </div>
+  </apex:form>
+  <script>
+           function show()
+           {
+             //alert ('hi');
+          //   document.getElementById("tablediv").style.display="block";
+            // document.getElementById("tab").style.display="block";
+           }
+       </script>
+      
+</apex:page>

@@ -1,0 +1,19 @@
+<apex:page id="page" standardController="account" recordSetVar="account" >
+<Apex:form >
+    <apex:pageBlock >
+    <apex:repeat value="{!account}" var="cc">
+    <apex:outputLink value="/apex/ContactDetails?cid={!cc.id}">{!cc.Name}</apex:outputLink><br/>
+    
+    
+    
+    </apex:repeat>
+    
+    
+    
+    </apex:pageBlock>
+<apex:detail subject="{!$CurrentPage.parameters.cid}"/>
+
+
+
+</Apex:form>
+</apex:page>

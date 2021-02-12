@@ -1,0 +1,44 @@
+<apex:page id="p1" controller="AddFieldController" >
+<apex:form id="form" >
+<apex:pageMessages id="abc"/>
+
+<b>No of products</b>
+<apex:inputText id="id1" onchange="calculate();"/>
+<b>Price of products</b>
+<apex:inputText id="id2" onchange="calculate();"/><br></br>
+
+</apex:form>
+<script>
+function calculate()
+{
+var val1= document.getElementById("p1:form:id1").value;
+alert(val1);
+var val2= document.getElementById("p1:form:id2").value;
+alert(val2);
+if(val1!=""&& val2!="" ){
+total(val1,val2);
+}
+}
+</script>
+
+<apex:form id="p2">
+<apex:actionFunction name="total" action="{!getTotal}" reRender="out" status="MyStatus" >
+<apex:param name="numofprod" value=""/>
+<apex:param name="priceofprod" value=""/>
+</apex:actionFunction>
+
+<apex:outputPanel id="out" style="block" >
+<apex:actionStatus startText="Starting.."  id="MyStatus" layout="block"></apex:actionStatus>
+<b>
+<apex:outputLabel value="{!tot}"></apex:outputLabel></b>
+
+
+
+
+
+</apex:outputPanel>
+</apex:form>
+
+
+
+</apex:page>

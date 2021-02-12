@@ -1,0 +1,140 @@
+<apex:page controller="experimentcls" sidebar="false" showHeader="false">
+
+  
+       <apex:form >
+       <apex:pageblock >
+         <apex:outputPanel >
+              <apex:inputText value="{!searching}"/>
+              <apex:commandButton value="search" id="Search" action="{!search1}" />
+              <br></br>
+              <br></br>
+              <apex:commandButton value="check" onclick="checkbox();"/>
+         </apex:outputPanel>
+       </apex:pageblock>
+       <script type="text/javascript" src="{!URLFOR($Resource.activewidget, 'ActiveWidgets/runtime/lib/aw.js')}"/>
+        <link href = "{!URLFOR($Resource.activewidget, 'ActiveWidgets/runtime/styles/aqua/aw.css')}" rel="stylesheet" type="text/css"/>  
+               <apex:outputPanel id="ref2">
+               
+                  <span id="mygrid"></span>
+                  <span id="myLabel"></span>
+                  <style>
+                      #mygrid .aw-grid-headers {color: blue}
+                      #mygrid .aw-grid-headers{font-weight:bold; font-size:14px}
+                     
+                      
+                      #mygrid .aw-column-0 {width:  50px; text-align: center}
+                      #mygrid .aw-column-1 {width: 300px;text-align: center}
+                      #mygrid .aw-column-2 {width: 150px; text-align: center}
+                      #mygrid .aw-column-3 {width: 150px; text-align: center}
+                  </style>
+                   <script>
+                   
+                   
+                   
+                  function  checkbox(event)
+                    {
+                 
+                  
+                  alert('1111111111111111');
+                //  for(var i=0;i<20;i++)
+                    {
+                    alert('000000000000');
+                
+                  alert('__getrowsfrSelectedGrid______grid1.getCellValue(0,i)'+grid1.getCellValue(0,1));
+                if(grid1.getCellValue(0,1)==true)
+                {
+                    alert(grid1selectedrows+'______length______'+grid1selectedrows.length+'______i__'+i);
+                    if(grid1selectedrows.length>0 )
+                    {
+                    //  alert('if_grid1selectedrows!=null');
+                        grid1selectedrows=grid1selectedrows+','+i;
+                    }
+                    else
+                    {
+                      alert('else__grid1selectedrows==null');
+                        grid1selectedrows=''+i;
+                    }
+                 alert('___grid1selectedrows__'+grid1selectedrows);
+                    if(newstringId!='')                            
+                        newstringId=newstringId+','+grid1.getCellValue(1,i); // To get Record ID
+                    else
+                        newstringId=grid1.getCellValue(1,i);
+                        }
+                    }
+                  }
+                  
+                  </script>
+                        <script type="text/javascript">
+                        var cb;
+                        
+                           var grid1 = new AW.UI.Grid;
+                           grid1.setId("mygrid");
+                           grid1.setControlPosition(100,100);
+                           grid1.setControlSize(810,400);
+                           grid1.setColumnCount(4);
+                         //  grid1.setColumnWidth([200, 180, 180]);
+                           
+                           grid1.setHeaderText();
+                            
+                            
+                             grid1.setCellTemplate(new AW.Templates.Checkbox, 0); 
+                            
+                           function myClickHandler(event){
+                            alert('aaaaaaaaaa');
+                           
+                           
+                        }
+                    
+                        
+                        grid1.setEvent("onclick", checkbox);
+                        
+                        
+                    
+                         
+                        
+                          
+                        
+                           grid1.setCellValue(false, 0);  
+                           grid1.setCellText({!printacc});
+                           var myheader= ["check","Name","Id","Phone"];
+                            grid1.setHeaderText(myheader);
+
+                          
+                           grid1.setSelectionMode("multi-row-marker");
+                           grid1.setRowCount(20);
+                           grid1.setVirtualMode(false); // disable virtual scrolling
+                           grid1.refresh();
+                      //  document.write(grid1);
+                         var label = new AW.UI.Label;
+                         label.setId("myLabel");
+                         label.refresh();
+                      
+
+                      
+                  </script>
+                   <script>
+                   
+                   
+                   
+      
+            
+                    function test(getvlaue)
+                      {  
+                         alert(getvlaue);
+                         methodOneInJavascript(getvlaue);
+                        
+                      }
+                  </script>
+       
+                  
+                  
+                  
+           </apex:outputPanel>
+           <apex:outputPanel id="ref3">
+           <span id="myList"></span>
+           
+
+</apex:outputPanel>
+       </apex:form>
+   
+</apex:page>

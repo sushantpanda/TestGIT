@@ -1,0 +1,37 @@
+<apex:page standardController="job_posting__c" extensions="jobposting_cls"  showHeader="false" >
+<head>
+<table>
+<tr>
+</tr>
+</table>
+<div style="border: 0px solid rgb(100, 200, 200); width:100%;height:50px; background:#dcf0dd;">
+<p style="margin-left:80px;"><table width="100%"><tr><td  align="left" width="50%" style="font-size:25px;"><B>Post Jobs </B></td></tr></table></p>
+ </div></head>
+  <apex:form >
+ 
+  <apex:pageblock >
+
+  <apex:pageblockButtons >
+    <apex:commandButton action="{!save}" value="Save"/>
+     
+     <apex:commandButton action="{!cancel}" value="cancel"/>
+  </apex:pageblockButtons>
+  <br></br>
+  <apex:pageBlockSection >
+ 
+  <apex:inputfield value="{!jp.Name}" /> 
+   
+  
+  <apex:inputfield value="{!jp.skill__c}" /> 
+  <apex:inputfield value="{!jp.experience_required__c}" />
+  <apex:inputfield value="{!jp.status__c}" /> 
+    <apex:inputfield value="{!jp.Job_Location__c}" /> 
+     <apex:inputfield value="{!jp.salary__c}" />
+    <apex:outputfield value="{!jp.Account__c}" />
+    <apex:outputfield value="{!jp.date__c}" />
+  </apex:pageBlockSection>
+  </apex:pageblock>
+  
+  </apex:form>
+ 
+</apex:page>

@@ -1,0 +1,9 @@
+<apex:page controller="sss" >
+<apex:form >
+
+Enter a no :<apex:inputText value="{!inputValue}" id="theTextInput"/>
+<apex:commandButton action="{!find}" value="Find"  reRender="ot"/>
+
+<apex:outputText id="ot" value="{!str}"></apex:outputText>
+</apex:form>
+</apex:page>

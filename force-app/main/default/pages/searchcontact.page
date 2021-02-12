@@ -1,0 +1,206 @@
+<apex:page tabStyle="Task" sidebar="false" showHeader="false" id="page1" controller="clsSearchContact">
+<apex:form >
+<script>
+var flag=0;
+var SelectConId1='';
+function checkAll(cb)
+{    
+    flag=0;
+    SelectConId1='';
+    var inputElem = document.getElementsByTagName("input");
+    for(var i=1; i<inputElem.length; i++)
+    {
+        if(inputElem[i].id.indexOf("checkedone")!=-1)
+        {
+            inputElem[i].checked = cb.checked;
+            flag=flag+1;
+            SelectConId1=SelectConId1+inputElem[i].name+',';
+        }
+    }
+    if(cb.checked!=true)
+    {
+        SelectConId1="";
+        flag=0;
+    } 
+  
+}
+
+function checkone(cb)
+{
+    var countchbox=0;
+   
+    if(cb.checked)
+    {   
+        flag=flag+1;
+        if((SelectConId1.length)<=1)
+        {
+            SelectConId1=cb.name+',';
+        }
+        else
+        {
+            SelectConId1=SelectConId1+cb.name+',';
+            alert(SelectConId1);
+        }
+    }
+    else if((cb.checked)!=true)
+    {
+        flag=flag-1;
+        if((SelectConId1.length)<=1)
+        {
+            SelectConId1=cb.name+',';
+            alert(SelectConId1);
+        }
+        else
+        {
+            var allids=SelectConId1.split(',');
+            var idarray='';
+            for(var i=0;i<allids.length;i++)
+            {
+                if(allids[i]!=cb.name  && allids[i]!='')
+                {
+                    idarray=idarray+allids[i]+',';
+                    alert (idarray);
+                }
+            }
+            SelectConId1=idarray;
+        }
+    }
+    
+     var inputElem = document.getElementsByTagName("input");
+    for(var i=0; i<inputElem.length; i++)
+    {
+        if(inputElem[i].id.indexOf("checkedone"))
+        {
+            countchbox=countchbox+1;
+        }
+    }
+    if(flag==countchbox-1)
+    {
+          document.getElementById("main").checked=true;
+    }
+    else
+    {
+         document.getElementById("main").checked=false;
+    }
+   // alert(SelectConId1);
+}
+
+function search_element()
+{
+    //alert('hello');
+    var element=document.getElementById("searchtext").value;
+   // alert(element);
+    searchelement(element);
+    return false;
+}
+function addtolist()
+{
+   
+    if((SelectConId1.length)<=1)
+    {
+        alert('Please select atleast one contact');
+        return false;
+    }
+    else
+    {
+        addtolistcontact();
+    }
+}
+
+function addtolistcontact()
+{
+   
+        var value1=window.parent.opener.document.getElementById("selectedcontactid").value;
+        if(value1.length<=0)
+        {
+            window.parent.opener.document.getElementById("selectedcontactid").value=SelectConId1;
+        }
+        else
+        {
+            value1=value1+ SelectConId1;
+            window.parent.opener.document.getElementById("selectedcontactid").value=value1;
+        } 
+        window.parent.opener.document.getElementById("selectedcontactid").onchange();
+        return false;
+    
+}
+
+
+
+
+
+
+
+
+
+
+function closethis()
+{
+    addtolistcontact();
+    window.parent.close();
+     return false;
+}
+</script>
+
+
+    <apex:pageblock tabstyle="account">
+     <apex:pageBlockSection title="Select Multiple Contact"   collapsible="false" columns="1">
+     <Apex:pageBlock >
+            
+            <apex:pageBlockButtons location="both" >
+            <apex:outputLabel >&nbsp;</apex:outputLabel>
+                <apex:commandButton onclick="return addtolist();" value="Add to List"/>
+                <Apex:commandButton value="Done"  onclick="return closethis()"/>
+            </apex:pageBlockButtons>
+            <apex:outputPanel >
+                <input type="text" id="searchtext"/>
+                <apex:actionFunction immediate="true"  action="{!searchcontact}" reRender="pbtable" name="searchelement">
+                    <apex:param name="assignserach" value="" assignTo="{!searchfiled}"/>
+                </apex:actionFunction>
+                <apex:commandButton value="search" onclick="return search_element();" />
+            </apex:outputPanel>
+            <apex:pageBlockTable value="{!getconlist}" var="cc" id="pbtable">
+                <apex:column >
+                    <apex:facet name="header"> 
+                        <input type="checkbox" id="main" onclick="return checkAll(this)"  /> 
+                        
+                    </apex:facet>
+                     <input type="checkbox" name="{!cc.id}" id="checkedone"  onclick="return checkone(this)"  /> 
+                    </apex:column>
+                <div id="{!cc.id}">
+                <apex:column >
+                    <apex:facet name="header" >Name</apex:facet>
+                    {!cc.name}
+                        </apex:column>
+                <apex:column >
+                    <apex:facet name="header" >Title</apex:facet>
+                    {!cc.Title}
+                </apex:column>
+
+                  <apex:column >
+                     <apex:facet name="header" >Phone</apex:facet>
+                    {!cc.phone}
+                </apex:column>
+                  <apex:column >
+                    <apex:facet name="header" >Email</apex:facet>
+                    {!cc.email}
+                </apex:column>
+
+                <apex:column >
+                    <apex:facet name="header" >Account/Company</apex:facet>
+                    {!cc.account.name}
+                </apex:column>
+                
+                <apex:column >
+                    <apex:facet name="header" >Owner</apex:facet>
+                    {!cc.owner.name}
+                </apex:column>
+                </div>
+            </apex:pageBlockTable>
+      
+        
+       </Apex:pageBlock>
+       </apex:pageBlockSection>
+    </apex:pageblock>
+    </apex:form>
+</apex:page>

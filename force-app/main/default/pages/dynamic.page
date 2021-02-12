@@ -1,0 +1,40 @@
+<apex:page controller="clsDynamicSearch">
+ <apex:form >
+
+ <script type="text/javascript">
+      function doSearch() {
+        searchServer(
+           document.getElementById("lastName").value
+          );
+      }
+      </script> 
+  <apex:pageBlock title="My Contact">
+  
+  
+   <apex:actionFunction name="searchServer" action="{!change}" rerender="pbt1" >
+         <apex:param name="lastName" value="" />
+          </apex:actionFunction>
+  
+  <table cellpadding="2" cellspacing="2">
+      
+      <tr>
+        <td style="font-weight:bold;">Last Name<br/>
+        <input type="text" id="lastName" onkeyup="doSearch();"/>
+        </td>
+      </tr>
+      </table>
+ 
+            <apex:pageBlockTable value="{!Contacts}" var="item" align="right"  id="pbt1">
+
+            <apex:column value="{!item.firstname}"/> 
+            <apex:column value="{!item.lastname}"/> 
+            <apex:column value="{!item.email}"/> 
+            <apex:column value="{!item.account.name}"/> 
+             
+
+        </apex:pageBlockTable> 
+
+    </apex:pageBlock> 
+    </apex:form>
+
+</apex:page>

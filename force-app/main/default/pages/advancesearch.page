@@ -1,0 +1,343 @@
+<apex:page id="pg"  controller="advanceSearch_class" showHeader="false">
+<head>
+<script type="text/javascript" src="{!URLFOR($Resource.GridWidget,'ActiveWidgets/runtime/lib/aw.js')}"/>
+<link href="{!URLFOR($Resource.GridWidget,'ActiveWidgets/runtime/styles/system/aw.css')}" rel="stylesheet" type="text/css"/>
+
+<style type="text/css">
+    #objId{width: 750px;}
+    #objId.aw-grid-headers .aw-column-1 {text-align: center}
+    #objId.aw-row-selector {text-align: center}  
+    #objId .aw-column-0 {text-align: left; width: 20px; padding-right:0px}
+    #objId .aw-column-1 {text-align: center; width: 100px; line-height:40px}
+    #objId .aw-column-2 {width:  80px;text-align: center;line-height:40px}
+    #objId .aw-column-3 {text-align: center; width:100px;line-height:40px}
+    #objId .aw-column-4 {text-align: center;width:70px;line-height:40px}
+    #objId .aw-column-5 {text-align: center;width:130px;line-height:40px}
+    #objId .aw-column-6 {text-align: center;width:120px;line-height:40px}
+  
+  #objId-header-1-box{text-align: center;}
+  #objId-header-2-box{text-align: center;}
+  #objId-header-6-box{text-align: center;}
+   #objId-header-3-box{text-align: center;}
+  #objId-header-4-box{text-align: center;}
+  #objId-header-5-box{text-align: center;}
+ 
+    #objId .aw-grid-cell {border-right: 0px solid threedlightshadow;}
+    #objId .aw-grid-row {border-bottom: 1px solid #EEEEEE;} 
+    /*    Alternate row colors */
+    #objId .aw-alternate-even .aw-grid-cell {background-color: #F5F5F5;}
+    #objId .aw-alternate-odd  .aw-grid-cell {background-color: #ffffff; }
+    /*    mouseover style */
+    #objId .aw-mouseover-row .aw-grid-cell {background: #daecfc; cursor: defualt;}
+    /* Selected row */
+    #objId .aw-rows-selected .aw-grid-cell {/*background: #658cb1;*/} 
+    /* box model fix for strict doctypes, safari */
+    .aw-strict #objId .aw-grid-cell {padding-right: 3px;}
+    .aw-strict #objId .aw-grid-row {padding-bottom: 3px;}
+    #objId .aw-grid-row {height: 44px;}
+    #objId-header-6-box{border-right:0px}
+    #objId-separator-6 { visibility:hidden;}
+</style>
+</head>
+
+<apex:form id="frm">
+
+    
+<table style="table-layout:fixed" >
+<tr>
+<td width="70">
+<B>Enter Skills:</B>
+</td>
+<td>
+<apex:inputText value="{!searchstring}" style="width:220px" id="serchtext" onclick="textChange()" onblur="sameText()" />
+</td>
+<td>
+<B>Job Location:</B>
+</td>
+<td>
+<apex:inputText value="{!job_location}" id="job_location"  />
+</td>
+
+
+
+<td>
+<B>Experience (in Years)</B>
+</td>
+<td>
+<apex:SelectList value="{!experience}" size="1">
+       
+           <apex:selectOption itemValue="0" itemLabel="0+"/>
+            <apex:selectOption itemValue="1" itemLabel="1+"/>
+            <apex:selectOption itemValue="2" itemLabel="2+"/>
+            <apex:selectOption itemValue="3" itemLabel="3+"/>
+            <apex:selectOption itemValue="4" itemLabel="4+"/>
+            <apex:selectOption itemValue="5" itemLabel="5+"/>
+            <apex:selectOption itemValue="6" itemLabel="6+"/>
+            <apex:selectOption itemValue="7" itemLabel="7+"/>
+            <apex:selectOption itemValue="8" itemLabel="8+"/>
+            <apex:selectOption itemValue="8" itemLabel="9+"/>
+            <apex:selectOption itemValue="8" itemLabel="10+"/>
+    </apex:SelectList>
+</td>
+
+
+<td>
+<apex:commandButton value="Click for Search" action="{!data}" onclick="return CheckValidation()" />
+<apex:commandButton value="click for Apply" onclick=" return getChecked();"   action="{!insertinjobapplied}" rendered="{!IF(datacheck!=false,true,false)}"  />
+
+</td>
+</tr>
+</table>
+
+
+<script>
+function CheckValidation()
+{
+     if((document.getElementById('pg:frm:serchtext').value=='Enter skills ' || document.getElementById('pg:frm:serchtext').value=='') && document.getElementById('pg:frm:job_location').value==''  )
+    {
+       alert('Please enter skills or location for searching job');
+       return false;
+    }   
+    else 
+    {
+        if(document.getElementById('pg:frm:serchtext').value=='Enter skills')
+        {
+           
+            document.getElementById('pg:frm:serchtext').value='';
+        
+        }
+        return true;
+    }
+}
+
+
+function textChange()
+{
+
+    if(document.getElementById('pg:frm:serchtext').value=='Enter skills')
+    {
+        document.getElementById('pg:frm:serchtext').value=''
+    }
+}
+
+function sameText()
+{
+     if(document.getElementById('pg:frm:serchtext').value=='')
+    {
+       
+        document.getElementById('pg:frm:serchtext').value='Enter skills'
+    }
+}
+
+function CheckSearchString()
+{
+     if(document.getElementById('pg:frm:serchtext').value=='Enter your skills' || document.getElementById('pg:frm:serchtext').value=='' )
+    {
+       alert('Please enter skiils first');
+       return false;
+    }   
+    else
+    {
+        return true;
+    }
+}
+
+</script>
+<apex:outputPanel id="gr">
+
+<script>
+var arrObjSelectedRows = new Array();
+        var objGridHeaderChkBox = new AW.UI.Checkbox;
+        objGridHeaderChkBox.setEvent("onclick", objGridToggleAllChkBoxes);
+        var objGridCellChkBox   = new AW.Templates.Checkbox;
+        objGridCellChkBox.setEvent("onclick", objGridCellChkBoxClickHandler);
+
+        var gridId = new AW.UI.Grid;
+        gridId.refresh();
+        var resultHeaders = ["","Job Code","Job Title","Employer Name","Experience Required<Br/>(in Years)","Skills Required","Job Location"];
+        var asc = 'ascending';
+        var ascdt = 'ascending';                                           
+        var number = new AW.Formats.Number;
+        number.setTextFormat("#");
+        var string = new AW.Formats.String;
+                      
+       gridId.setSize(1000,300);
+        
+        gridId.setId("objId");
+        
+        
+        
+         
+        gridId.setHeaderText(resultHeaders);
+        gridId.setHeaderHeight(40);
+        gridId.setCellText({!grdData});
+        gridId.setCellFormat([string, string, string,string,string,string,string]);
+        gridId.getRowTemplate().setClass("text", "wrap");                       
+        gridId.setColumnCount(8);
+       
+        gridId.setRowCount({!grdData}.length);
+        gridId.getHeadersTemplate().setClass("text", "wrap"); 
+        objGridHeaderChkBox.setControlValue(false);
+        gridId.setHeaderTemplate(objGridHeaderChkBox,0);
+       // alert('{!datacheck}')
+        if('{!datacheck}'!='false' )
+         gridId.setCellTemplate(objGridCellChkBox,0);
+  
+        
+        
+        
+        //var totalrows = gridId.getRowCount(); 
+        gridId.setRowHeight(40);
+        gridId.onCellClicked = function(event, col, row){window.status = this.getCellText(col, row)};
+        gridId.sort(7,"descending");
+        gridId.setColumnResizable(false,0);
+        //gridId.setColumnResizable(false,6);
+        gridId.getRowTemplate().setClass("text", "wrap");
+        gridId.setCellEditable(false);  
+        gridId.onHeaderClicked = function(event,index)
+        {
+                                                       
+            if (index==0 || index==2) 
+            return 'disabled';
+        }  
+
+function objGridToggleAllChkBoxes()
+    {
+        arrObjSelectedRows.length = 0;
+        if(objGridHeaderChkBox.getControlValue() == false )
+        {           
+            gridId.setCellValue(true,0);
+            //arrObjSelectedRows.length =0 ;            
+            for(var i = 0; i < gridId.getRowCount(); i++)
+                arrObjSelectedRows.push(i);
+
+            if(document.all)
+            {
+                objGridHeaderChkBox.setControlValue(true);
+            }//Fix for IE Header Check bug
+            gridId.refresh();
+        }
+        else if(objGridHeaderChkBox.getControlValue() == true)
+        {
+            //alert('TTp ' + objGridHeaderChkBox.getControlValue());
+            gridId.setCellValue(false,0);           
+            if(document.all){objGridHeaderChkBox.setControlValue(false);}//Fix for IE Header Check bug
+            gridId.refresh();
+        }
+    }//End function objGridToggleAllChkBoxes
+
+    function objGridCellChkBoxClickHandler(event)
+    {
+        var arrParts = (this.getId()).split("-");
+        var totRows = gridId.getRowCount();
+        var chk = true;
+        
+       
+        if(!gridId.getCellValue(0,arrParts[3]) || gridId.getCellValue(0,arrParts[3]) == 'false')
+        {                                         
+            gridId.setCellValue(true,0,arrParts[3])
+            
+        }
+        else
+            gridId.setCellValue(false,0,arrParts[3])
+            
+        
+        
+        arrObjSelectedRows.length = 0;
+        for(var i = 0; i < totRows; i++)
+        {
+            if(gridId.getCellValue(0,i) == true || gridId.getCellValue(0,i) == 'true')
+            {
+                arrObjSelectedRows.push(i);
+                //alert(arrObjSelectedRows);
+                //alert('Accp ' + gridId.getCellValue(0,i));
+            }
+        }
+        if(arrObjSelectedRows.length == totRows)
+        {
+           objGridHeaderChkBox.setControlValue(true);
+        }
+        else
+        {
+           objGridHeaderChkBox.setControlValue(false);
+        }
+     }
+
+document.write(gridId)
+
+function getChecked() 
+    { 
+     idmsg='';
+        var a;
+        var ConatinsCaptain = 0;
+        var arrCapRecs = new Array();
+        
+
+       //alert(arrObjSelectedRows.length);
+     
+        if(arrObjSelectedRows.length > 0)
+        {
+            if(arrObjSelectedRows.length <21)
+            {
+            for(var i = 0; i < arrObjSelectedRows.length; i++) 
+            { 
+                if(gridId.getCellValue(0,arrObjSelectedRows[i]))
+                { 
+                    
+                    gridId.getCellValue(1,arrObjSelectedRows[i])
+                    arrCapRecs.push(gridId.getCellValue(1,arrObjSelectedRows[i]));
+                    
+                } 
+            }
+          //  alert(arrCapRecs);
+           
+           for(var i = 0 ; i < arrCapRecs.length;i++)
+           {
+              if(arrCapRecs[i] != '')
+               {
+                 idmsg=idmsg+arrCapRecs[i]+";";
+               }
+           } 
+           
+           document.getElementById('pg:frm:hidden').value=idmsg;
+      // alert(idmsg);
+        return true;
+        }
+        else
+        {
+            alert('You can not select more than 20 jobs in one time')
+            return false;
+        }
+        
+         
+        }
+        
+        else
+        {
+            alert('Please select at least one job');
+            return false;
+        }
+        
+       
+      
+    
+         
+     }
+
+
+
+
+
+
+</script>
+<apex:inputHidden id="hidden" value="{!selectedjob}"  />
+
+
+
+
+
+</apex:outputPanel>
+
+
+</apex:form>
+</apex:page>

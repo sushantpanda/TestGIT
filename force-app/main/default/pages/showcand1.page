@@ -1,0 +1,75 @@
+<apex:page id="pg" standardController="candidate__c" extensions="editcand_cls" showHeader="false">
+<apex:form id="fm">
+<apex:pageBlock id="pb" title="Candidate Registration">
+<apex:pageBlockSection title="Registration">
+<apex:outputField value="{!c.Email__c}"/>
+
+<apex:outputField value="{!c.password__c}"/>
+
+
+</apex:pageBlockSection>
+<apex:pageblockSection id="pbs" title="candidate information">
+
+<apex:outputField value="{!c.name}"/>
+<apex:outputField value="{!c.date_of_birth__c}"/>
+<apex:outputField value="{!c.age__c}"/>
+<apex:outputField value="{!c.address__c}"/>
+<apex:outputField value="{!c.street__c}"/>
+<apex:outputField value="{!c.city__c}"/>
+<apex:outputField value="{!c.state_province__c}"/>
+<apex:outputField value="{!c.country__c}"/>
+
+
+</apex:pageblockSection>
+
+<apex:pageblockSection title="upload cv and photo">
+
+
+  <a href="/servlet/servlet.FileDownload?file={!Candidate__c.image_ID__c}" target="_BLANK" > Download Your CV </a>
+</apex:pageblockSection>
+
+
+<apex:pageblockSection title="photo" >
+<apex:pageBlockSectionItem id="ImageUpload">
+       <apex:outputPanel id="img">
+          
+            
+             
+            <apex:outputLabel style="color:#4a4a56;font-style:Arial;font-size:18px;"> <B> Candidate Image</B></apex:outputLabel>
+        
+           &nbsp;&nbsp; &nbsp;<apex:image url="/servlet/servlet.FileDownload?file={!candidate__c.cv_id__c}" alt="select image" style="width:100px;height:100px" id="canimage" />
+           
+           </apex:outputPanel>  
+          </apex:pageBlockSectionItem>
+          </apex:pageblockSection>
+
+
+
+
+         
+         
+          
+
+<apex:pageblockSection title="current employee">
+
+<apex:outputField value="{!c.name_of_employee__c}"/>
+<apex:outputField value="{!c.skill__c}"/>
+<apex:outputField value="{!c.year_of_experience__c}"/>
+<apex:outputField value="{!c.higest_education__c}"/>
+</apex:pageblockSection>
+
+<apex:pageblockSection title="mailer and private setting">
+<apex:outputField value="{!c.email_alert_on_new_job__c}"/>
+<apex:outputField value="{!c.enable_profile_for_employee__c}"/>
+
+</apex:pageblockSection>
+
+
+
+</apex:pageblock>
+ </apex:form>
+ 
+
+
+ 
+</apex:page>

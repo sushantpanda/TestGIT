@@ -1,0 +1,203 @@
+<apex:page id="pg" controller="recordaccount" >
+<apex:form id="f1" >  
+<html>
+<head>
+<script type="text/javascript" src="{!URLFOR($Resource.GridWidget,'ActiveWidgets/runtime/lib/aw.js')}"/>
+<link href="{!URLFOR($Resource.GridWidget,'ActiveWidgets/runtime/styles/system/aw.css')}" rel="stylesheet" type="text/css"/>
+</head>
+<apex:commandButton value="Click ..................." action="{!record}"  />
+
+<div>
+<script>
+        var objGridHeaderChkBox = new AW.UI.Checkbox;
+        var objGridCellChkBox   = new AW.Templates.Checkbox;
+         objGridHeaderChkBox.setEvent("onclick", objGridToggleAllChkBoxes);
+        objGridCellChkBox.setEvent("onclick", objGridCellChkBoxClickHandler);
+        
+        var arrObjSelectedRows = new Array();
+        var gridId = new AW.UI.Grid;
+
+        var resultHeaders = ["","  Job Code  ","  Jobtitle  "," Skills Required  ","  location "];
+        var asc = 'ascending';
+        var ascdt = 'ascending';                                           
+        var number = new AW.Formats.Number;
+        number.setTextFormat("#");
+        var string = new AW.Formats.String;
+                      
+       gridId.setSize(450,500);
+        
+        gridId.setId("objId");
+        
+        
+        
+         
+        gridId.setHeaderText(resultHeaders);
+        gridId.setHeaderHeight(40);
+        gridId.setCellText({!grdData });
+        gridId.setCellFormat([string, string, string,string]);
+        gridId.getRowTemplate().setClass("text", "wrap");                       
+        gridId.setColumnCount(4);
+        gridId.setRowCount({!grdData}.length);
+       // alert({!grdData }.length);
+        gridId.getHeadersTemplate().setClass("text", "wrap"); 
+        objGridHeaderChkBox.setControlValue(false);
+        gridId.setHeaderTemplate(objGridHeaderChkBox,0);
+         gridId.setCellTemplate(objGridCellChkBox,0);
+        
+        
+        
+        //var totalrows = gridId.getRowCount(); 
+        gridId.setRowHeight(40);
+       
+ document.write(gridId)
+ 
+ 
+ //Start function objGridToggleAllChkBoxes
+ 
+ function objGridToggleAllChkBoxes()
+    {
+        arrObjSelectedRows.length = 0;
+        if(objGridHeaderChkBox.getControlValue() == false )
+        {           
+            gridId.setCellValue(true,0);
+            //arrObjSelectedRows.length =0 ;            
+            for(var i = 0; i < gridId.getRowCount(); i++)
+                arrObjSelectedRows.push(i);
+
+            if(document.all)
+            {
+                objGridHeaderChkBox.setControlValue(true);
+            }//Fix for IE Header Check bug
+            gridId.refresh();
+        }
+        else if(objGridHeaderChkBox.getControlValue() == true)
+        {
+            //alert('TTp ' + objGridHeaderChkBox.getControlValue());
+            gridId.setCellValue(false,0);           
+            if(document.all){objGridHeaderChkBox.setControlValue(false);}//Fix for IE Header Check bug
+            gridId.refresh();
+        }
+    }//End function objGridToggleAllChkBoxes
+    
+    
+    function objGridCellChkBoxClickHandler(event)
+    {
+        var arrParts = (this.getId()).split("-");
+        var totRows = gridId.getRowCount();
+        var chk = true;
+        
+       
+        if(!gridId.getCellValue(0,arrParts[3]) || gridId.getCellValue(0,arrParts[3]) == 'false')
+        {                                         
+            gridId.setCellValue(true,0,arrParts[3])
+            
+        }
+        else
+            gridId.setCellValue(false,0,arrParts[3])
+            
+        
+        
+        arrObjSelectedRows.length = 0;
+        for(var i = 0; i < totRows; i++)
+        {
+            if(gridId.getCellValue(0,i) == true || gridId.getCellValue(0,i) == 'true')
+            {
+                arrObjSelectedRows.push(i);
+                //alert(arrObjSelectedRows);
+                //alert('Accp ' + gridId.getCellValue(0,i));
+            }
+        }
+        if(arrObjSelectedRows.length == totRows)
+        {
+           objGridHeaderChkBox.setControlValue(true);
+        }
+        else
+        {
+           objGridHeaderChkBox.setControlValue(false);
+        }
+     }
+     
+   // start of function getchecked()
+   
+   
+   function getChecked() 
+    { 
+     idmsg='';
+        var a;
+        var ConatinsCaptain = 0;
+        var arrCapRecs = new Array();
+        
+
+       //alert(arrObjSelectedRows.length);
+     
+        if(arrObjSelectedRows.length > 0)
+        {
+            if(arrObjSelectedRows.length <21)
+            {
+            for(var i = 0; i < arrObjSelectedRows.length; i++) 
+            { 
+                if(gridId.getCellValue(0,arrObjSelectedRows[i]))
+                { 
+                    
+                    gridId.getCellValue(1,arrObjSelectedRows[i])
+                    arrCapRecs.push(gridId.getCellValue(1,arrObjSelectedRows[i]));
+                    
+                } 
+            }
+          //  alert(arrCapRecs);
+           
+           for(var i = 0 ; i < arrCapRecs.length;i++)
+           {
+              if(arrCapRecs[i] != '')
+               {
+                 idmsg=idmsg+arrCapRecs[i]+";";
+               }
+           } 
+        
+        
+        document.getElementById('pg:f1:hidden').value=idmsg;
+        return true;
+        }
+        else
+        {
+            alert('You can not select more than  20 jobs in one time')
+            return false;
+        }
+        
+         
+        }
+        
+        else
+        {
+            alert('Please select at least one job');
+            return false;
+        }
+        
+       
+      
+    
+         
+     }
+     
+     
+     
+     // end of function getchecked()
+     
+     
+    
+    
+ 
+</script>
+
+
+</div>
+
+
+</html> 
+
+
+
+<apex:inputHidden id="hidden" value="{!selectedcheck}"  />
+
+</apex:form> 
+</apex:page>

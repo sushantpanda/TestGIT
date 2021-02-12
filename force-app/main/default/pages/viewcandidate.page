@@ -1,0 +1,35 @@
+<apex:page standardController="candidate__c" extensions="checkcandidate" >
+<apex:form >
+<html>
+<body>
+<br></br>
+<h1><font size ='5' color="blue">Welcome {!candidate__c.name}</font></h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <a href="https://c.ap1.visual.force.com/apex/search?id={!candidate__c.id}/"><h1><font size ='3'>Search</font></h1></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://c.ap1.visual.force.com/apex/advancesearch?id={!candidate__c.id}"><h1><font size ='3'>Advance search</font></h1></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <a href="https://c.ap1.visual.force.com/apex/appliedjob?cid={!candidate__c.id}"><h1><font size ='3'>job applied</font></h1></a>
+<a href="/servlet/servlet.FileDownload?file={!Candidate__c.CV_ID__c}" target="_BLANK" > Download Your CV </a>
+<div id="myDiv" name="myDiv" title="Example Div Element" style="font-family: Helvetica; font-size: 12pt; border: 3px solid black;width:600px">
+  <div  id="subDiv1" name="subDiv1" title="Subdivision Div Element" style="color:'black'; border: 1px dotted black;">
+  <h1>Name :</h1>     {!candidate__c.name} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br></br>
+    <h1>City:</h1>     {!candidate__c.state_province__c}<br></br>
+     <h1>country:</h1>     {!candidate__c.country__c}<br></br>
+    <h1>Phone:</h1>     {!candidate__c.phone_no__c}<br></br>
+     <h1>Email id :</h1>     {!candidate__c.Email__c}<br></br>
+     <h1>date of birth :</h1>     {!candidate__c.date_of_birth__c}<br></br>
+     <h1>Address :</h1>     {!candidate__c.address__c}<br></br> 
+     <h1>city :</h1>     {!candidate__c.city__c}<br></br>
+     <h1>street :</h1>     {!candidate__c.street__c}<br></br>
+     <h1>state :</h1>     {!candidate__c.state_province__c}<br></br>
+  </div>
+  <br />
+  <div id="subDiv2" name="subDiv2" title="Subdivision Div Element" style="color: #FF00FF;border: 1px solid black;">
+    
+  </div>
+</div>
+</body>
+ </html>
+     
+     
+
+</apex:form>
+</apex:page>

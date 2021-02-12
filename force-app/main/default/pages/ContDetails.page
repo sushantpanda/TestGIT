@@ -1,0 +1,9 @@
+<apex:page standardController="Contact" recordSetVar="Co" id="p">
+<apex:repeat value="{!Co}" var="c">
+{!c.lastname}
+</apex:repeat>
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Page: ContDetails
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

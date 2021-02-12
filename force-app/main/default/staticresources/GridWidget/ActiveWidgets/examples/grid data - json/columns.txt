@@ -1,0 +1,121 @@
+{items: [{
+	ticker: "MSFT",
+	name: "Microsoft Corporation",
+	mktcap: "314,571.156",
+	sales: "32,187.000",
+	employees: "55000"
+},{
+	ticker: "ORCL",
+	name: "Oracle Corporation",
+	mktcap: "62,615.266",
+	sales: "9,519.000",
+	employees: "40650"
+},{
+	ticker: "SAP",
+	name: "SAP AG (ADR)",
+	mktcap: "40,986.328",
+	sales: "8,296.420",
+	employees: "28961"
+},{
+	ticker: "CA",
+	name: "Computer Associates Inter",
+	mktcap: "15,606.335",
+	sales: "3,164.000",
+	employees: "16000"
+},{
+	ticker: "ERTS",
+	name: "Electronic Arts Inc.",
+	mktcap: "14,490.895",
+	sales: "2,503.727",
+	employees: "4000"
+},{
+	ticker: "SFTBF",
+	name: "Softbank Corp. (ADR)",
+	mktcap: "14,485.840",
+	sales: ".000",
+	employees: "6865"
+},{
+	ticker: "VRTS",
+	name: "Veritas Software Corp.",
+	mktcap: "14,444.272",
+	sales: "1,578.658",
+	employees: "5647"
+},{
+	ticker: "SYMC",
+	name: "Symantec Corporation",
+	mktcap: "9,932.483",
+	sales: "1,482.029",
+	employees: "4300"
+},{
+	ticker: "INFY",
+	name: "Infosys Technologies Ltd.",
+	mktcap: "9,763.851",
+	sales: "830.748",
+	employees: "15400"
+},{
+	ticker: "INTU",
+	name: "Intuit Inc.",
+	mktcap: "9,702.477",
+	sales: "1,650.743",
+	employees: "6700"
+},{
+	ticker: "ADBE",
+	name: "Adobe Systems Incorporate",
+	mktcap: "9,533.050",
+	sales: "1,230.817",
+	employees: "3341"
+},{
+	ticker: "PSFT",
+	name: "PeopleSoft, Inc.",
+	mktcap: "8,246.467",
+	sales: "1,941.167",
+	employees: "8180"
+},{
+	ticker: "SEBL",
+	name: "Siebel Systems, Inc.",
+	mktcap: "5,434.649",
+	sales: "1,417.952",
+	employees: "5909"
+},{
+	ticker: "BEAS",
+	name: "BEA Systems, Inc.",
+	mktcap: "5,111.813",
+	sales: "965.694",
+	employees: "3063"
+},{
+	ticker: "SNPS",
+	name: "Synopsys, Inc.",
+	mktcap: "4,482.535",
+	sales: "1,169.786",
+	employees: "4254"
+},{
+	ticker: "CHKP",
+	name: "Check Point Software Tech",
+	mktcap: "4,396.853",
+	sales: "424.769",
+	employees: "1203"
+},{
+	ticker: "MERQ",
+	name: "Mercury Interactive Corp.",
+	mktcap: "4,325.488",
+	sales: "444.063",
+	employees: "1822"
+},{
+	ticker: "DOX",
+	name: "Amdocs Limited",
+	mktcap: "4,288.017",
+	sales: "1,427.088",
+	employees: "9400"
+},{
+	ticker: "CTXS",
+	name: "Citrix Systems, Inc.",
+	mktcap: "3,946.485",
+	sales: "554.222",
+	employees: "1670"
+},{
+	ticker: "KNM",
+	name: "Konami Corporation (ADR)",
+	mktcap: "3,710.784",
+	sales: ".000",
+	employees: "4313"
+}]}

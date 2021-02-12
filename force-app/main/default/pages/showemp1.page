@@ -1,0 +1,36 @@
+<apex:page controller="showemp_cls" showHeader="false" >
+  <apex:form >
+<apex:pageblock title=" employeeinfo">
+<apex:pageblockSection title="account information">
+<apex:outputField value="{!account.name}"/>
+<apex:outputField value="{!account.employee_email__c}"/>
+<apex:outputField value="{!account.password__c}"/>
+
+</apex:pageblockSection>
+<apex:pageBlockSection title="Addressinformation">
+<apex:outputField value="{!account.billingstreet}"/>
+<apex:outputField value="{!account.billingcity}"/>
+<apex:outputField value="{!account.phone}"/>
+<apex:outputField value="{!account.state__c}"/>
+<apex:outputField value="{!account.billingcountry}"/>
+</apex:pageBlockSection>
+ <apex:pageBlockSection title="contactinformation">
+
+                  
+         <apex:outputField value="{!contact.firstName}"/>              
+         <apex:outputField value="{!contact.lastName}"/>                
+          <apex:outputField value="{!contact.phone}"/>
+          <apex:outputField value="{!contact.email}"/>
+          <apex:outputField value="{!contact.department}"/>
+</apex:pageBlockSection>
+
+
+
+
+ 
+<apex:pageblockButtons >
+
+</apex:pageblockButtons>
+</apex:pageblock>
+</apex:form>
+</apex:page>

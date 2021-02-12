@@ -1,0 +1,72 @@
+<apex:page controller="candidatelogin_cls" showHeader="false">
+<table width="971" cellspacing="0" cellpadding="0" border="0" align="center">
+<tbody>
+<tr>
+<td height="110" style="padding: 3px 0px 0px 15px;">
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody>
+<tr>
+<td width="49%" height="110">
+<a href="http://www.monsterindia.com/">
+<img border="0"  src='{!URLFOR($Resource.navatar)}'/>
+</a>
+</td>
+<td width="51%" valign="top" align="right" style="padding: 8px 0px 10px 12px;">
+
+
+
+
+
+
+
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+           
+<apex:form >
+<apex:sectionHeader title="JobseekerLogin" />
+<div id="theDiv"><img id="theImg"  src='{!URLFOR($Resource.jobseeker)}' />
+<apex:outputPanel id="oppg">
+
+  <apex:pageMessages />
+</apex:outputPanel>
+
+  <apex:pageBlock >
+  
+ 
+  <apex:pageblockSection columns="1" id="pbs1">
+
+  <apex:inputText label="Username"  value="{!uname}" style="width:190px;margin-left:5px;_margin-left:0;!margin-left:0;font-family: Helvetica; font-size: 12pt; "/>
+  <apex:inputsecret label="Password"  value="{!pwd}" style="width:190px;margin-left:5px;_margin-left:0;!margin-left:0;"/>
+ 
+  </apex:pageBlockSection> 
+ <apex:pageBlockButtons location="bottom">  
+ 
+ <apex:commandbutton action="{!signin}" image="{!$Resource.signup}" style="width:110px;"/>
+ <apex:commandbutton value="Register"  action="{!register}" image="{!$Resource.registernow}" style="width:110px;"/>
+ 
+ <br/>
+ 
+ 
+ <br/>
+
+
+
+ 
+ </apex:pageBlockButtons>
+  
+
+</apex:pageBlock>
+
+
+
+     </div>
+
+</apex:form>
+ 
+</apex:page>

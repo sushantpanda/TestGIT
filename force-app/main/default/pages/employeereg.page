@@ -1,0 +1,34 @@
+<apex:page standardController="account" extensions="accountcontact" tabStyle="account" showHeader="false" >
+<apex:form >
+<apex:pageblock title=" employeeinfo">
+<apex:pageblockSection title="account information">
+<apex:inputField value="{!account.name}"/>
+<apex:inputField value="{!account.employee_email__c}"/>
+<apex:inputSecret value="{!account.password__c}"/>
+
+</apex:pageblockSection>
+<apex:pageBlockSection title="Addressinformation">
+<apex:inputField value="{!account.billingstreet}"/>
+<apex:inputField value="{!account.billingcity}"/>
+<apex:inputField value="{!account.phone}"/>
+<apex:inputField value="{!account.state__c}"/>
+<apex:inputField value="{!account.billingcountry}"/>
+</apex:pageBlockSection>
+<apex:pageBlockSection title="contactinformation">
+
+                  
+         <apex:inputField id="contactFirstName" value="{!contact.firstName}"/>              
+         <apex:inputField id="contactLastName" value="{!contact.lastName}"/>                
+          <apex:inputField id="contactPhone" value="{!contact.phone}"/>
+           <apex:inputField id="email" value="{!contact.email}"/>
+           <apex:inputField id="department" value="{!contact.department}"/>
+</apex:pageBlockSection>
+<apex:pageblockButtons >
+<apex:commandButton value="save" action="{!save1}"/>
+<apex:commandButton value="cancel" action="{!cancel}"/>
+
+</apex:pageblockButtons>
+
+</apex:pageblock>
+</apex:form>
+</apex:page>

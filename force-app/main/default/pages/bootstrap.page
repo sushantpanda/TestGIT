@@ -1,0 +1,73 @@
+<!-- Resource : Oycode.com, Harshit Pandey -->
+<apex:page standardController="Account" showheader="false" >
+<html lang="en">
+<head>
+<apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/js/jquery-1.4.2.min.js')}" />
+<apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/js/jquery-ui-1.8.6.custom.min.js')}" />
+<apex:stylesheet value="{!URLFOR($Resource.jQueryUI, '/css/ui-lightness/jquery-ui-1.8.6.custom.css')}" />
+<!-- Bootstrap -->
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+<link href="//getbootstrap.com/examples/signin/signin.css" rel="stylesheet" media="screen"/>
+<title>BootStrapV3 on Visualforce Page by Oyecode</title>
+</head>
+<body>
+<script>
+.container {
+    background-color:gray;
+    width:70%;
+    height:300px;
+    
+
+}
+
+$('input[type="checkbox"].large').checkbox({
+    buttonStyle: 'btn-link btn-large',
+    checkedClass: 'icon-check',
+    uncheckedClass: 'icon-check-empty'
+});
+
+</script>
+
+<br/><br/><br/>
+<div class="container">
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+    <div class="col-md-4">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email"/>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+    <div class="col-md-4">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Password"/>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" class="large"/> Remember me
+        </label>
+        <button class="btn clearfix btn-link" type="button">
+        <span class="icon cb-icon-check" style="display: inline-block;"></span>
+        <span class="icon cb-icon-check-empty" style="display: none;"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Sign in</button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- /container -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+</body>
+</html>
+</apex:page>

@@ -1,0 +1,45 @@
+<apex:page standardController="candidate__c"  extensions="UploadPic" >
+
+/* This section is responsible for calling functions to display the pic once it is uploaded */
+
+<apex:pageBlock >
+<apex:pageBlockSection >
+
+<apex:outputPanel rendered="{!isAvailable}" >
+
+/*An Image component that will show the pic in dimension 200 x 200 */
+
+<apex:image height="200px" width="200" value="{!PostImage}"/><p/>
+
+</apex:outputPanel>
+
+</apex:pageBlockSection>
+
+/*This section will call the functions to upload the pic into the attachement of the contacts*/
+
+
+
+<apex:form rendered="true" >
+
+<apex:pageBlockSection rendered="true" >
+
+
+
+<apex:inputFile value="{!attachment.body}" filename="{!attachment.name}" size="10" />
+<apex:param value="{!attachment.name}" assignTo="{!attach}"/>
+
+<apex:commandButton value="Save" action="{!saveAttachment}" />
+
+
+
+The image uploaded should not be of more than 225x225 pixel in Dimension.
+
+</apex:pageBlockSection>
+
+</apex:form>
+
+</apex:pageBlock>
+
+
+
+</apex:page>

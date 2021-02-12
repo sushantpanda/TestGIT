@@ -1,0 +1,27 @@
+<apex:page standardController="account" extensions="checkemployee" >
+<apex:form >
+<html>
+<body>
+<br></br>
+<h1><font size ='5' color="blue">Welcome {!c.name}</font></h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://c.ap1.visual.force.com/apex/employeesearch?cid={!account.id}"><h1><font size ='3' color="black">Search</font></h1></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://c.ap1.visual.force.com/apex/jobposting?cid={!account.id}"><h1><font size ='3' color="black">jobposting</font></h1></a>
+<div id="myDiv" name="myDiv" title="Example Div Element" style="font-family: Helvetica; font-size: 12pt; border: 3px solid black;width:600px">
+  <div  id="subDiv1" name="subDiv1" title="Subdivision Div Element" style="color:'black'; border: 1px dotted black;">
+  <h1>Name :</h1>     {!account.name} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br></br><br></br>
+   <h1>Email :</h1>     {!account.employee_email__c} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br></br><br></br>
+   <h1>phone :</h1>     {!account.phone} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br></br><br></br>
+   <h1>state:</h1>     {!account.state__c} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br></br><br></br>
+    <h1>Fax:</h1>     {!account.fax} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br></br><br></br>
+    <h1>BillingAddress:</h1>     {!account.Description} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br></br><br></br>
+   
+  </div>
+  <br />
+  <div id="subDiv2" name="subDiv2" title="Subdivision Div Element" style="color: #FF00FF;border: 1px solid black;">
+    
+  </div>
+</div>
+</body>
+ </html>
+
+</apex:form>
+</apex:page>

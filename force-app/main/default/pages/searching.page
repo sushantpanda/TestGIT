@@ -1,0 +1,29 @@
+<apex:page controller="searchingtest" >
+ <apex:form >
+      <apex:inputText value="{!searching}"/>
+      <apex:commandButton value="search" action="{!Check}"/>
+     
+      <input type="checkbox" id="check1" />advance search
+      <apex:pageBlock title="search">
+      <apex:dataTable value="{!jb}" var="j" cellspacing="1" cellpadding="10" border="1">
+      <apex:column headerValue="title">
+                        <apex:outputtext value="{!j.name}">
+                        </apex:outputtext>
+                         </apex:column> 
+                         <apex:column headerValue="exp">
+                           <apex:outputtext value="{!j.experience_required__c}">
+                        </apex:outputtext>
+                     </apex:column>     
+      </apex:dataTable> 
+      
+      
+      </apex:pageBlock>
+      <script>
+      if(checkboxObject.checked=true)
+      {
+      
+      }
+      </script>
+   
+ </apex:form>
+</apex:page>
